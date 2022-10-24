@@ -1,0 +1,4 @@
+﻿  mod6repairShopBill.cpp
+C:\Users\4800590195\source\repos\mod6repairShopBill\mod6repairShopBill\mod6repairShopBill.cpp(60,27): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\4800590195\source\repos\mod6repairShopBill\mod6repairShopBill\mod6repairShopBill.cpp(61,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  mod6repairShopBill.vcxproj -> C:\Users\4800590195\source\repos\mod6repairShopBill\x64\Debug\mod6repairShopBill.exe
