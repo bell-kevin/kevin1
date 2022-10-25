@@ -3,69 +3,66 @@
 
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 #include <string>
 using namespace std;
-
-//function prototypes
-void calculateCosts(double* labor, double* parts, double* subtotal);
-void calculateFees(double* shopFee, double* tax, double* total);
-string convertToString(double num);
-string formatCurrency(double num);
-double shopFee, hourlyLaborRate = 50.00, tax;
+string dollarFormat(string);
+string dollarFormat(double);
 int main()
 {
-	cout << "Mod. 6 Repair Shop Bill\n\n";
-	cout << "Enter the hours of labor: ";
-	double hoursOfLabor, partsCharge, subtotal, total;
-	cin >> hoursOfLabor;
-	cout << "Enter the parts charge: ";
-	cin >> partsCharge;
-	calculateCosts(&hoursOfLabor, &partsCharge, &subtotal);
-	calculateFees(&shopFee, &tax, &total);
+	cout << "Mod. 6 Repair Shop Bill by Kevin Bell\n\n";
+	cout << "Please enter the hours of labor: ";
+	double laborHours;
+	cin >> laborHours;
+	cout << "Enter the cost of parts: ";
+	double partsCost;
+	cin >> partsCost;
+	double laborWage = 50;
+	cout << "   Parts: " << dollarFormat(partsCost) << endl;
+	cout << "   Labor: " << dollarFormat(laborHours * laborWage) << endl;
+	double subtotal = partsCost + laborHours * laborWage;
+	cout << "Subtotal: " << dollarFormat(subtotal) << endl;
+	double shopFee = subtotal * .05;
+	cout << "Shop Fee: " << dollarFormat(shopFee) << endl;
+	cout << "     Tax: " << dollarFormat(subtotal * .04) << endl;
+	cout << "   Total: " << dollarFormat(subtotal + shopFee + subtotal * .04) << endl;
 	system("pause");
 	return 0;
-} // end function main
+}
 
-//function to calculate the costs of labor and parts, and print out the lines on the bill for the labor charge, parts charge, and the subtotal of those items
-void calculateCosts(double* labor, double* parts, double* subtotal)
+//**************************************************************
+// Returns a $-formatted version of the input string.          *
+//**************************************************************
+string dollarFormat(string original)
 {
-	*subtotal = *labor * hourlyLaborRate + *parts;
-	cout << "Parts: $" << formatCurrency(*parts) << fixed << setprecision(2) << endl;
-	cout << "Labor: $" << formatCurrency(*labor * hourlyLaborRate) << fixed << setprecision(2) << endl;
-	cout << "Subtotal: $" << formatCurrency(*subtotal) << fixed << setprecision(2) << endl;
-} // end function calculateCosts
+	string formatted = original; // formatted string to return
+	int decimalPos = formatted.find('.'); // position of decimal
+	int pos = decimalPos; // position to insert commas
 
-//function to calculate the shop fee, tax, and total, and print out the lines on the bill for the shop fee, tax, and the total of those items
-void calculateFees(double* shopFee, double* tax, double* total)
-{
-	*shopFee = 20.00;
-	*tax = *total * 0.06;
-	*total = *shopFee + *tax + *total;
-	cout << "Shop fee: $" << formatCurrency(*shopFee) << fixed << setprecision(2) << endl;
-	cout << "Tax: $" << formatCurrency(*tax) << fixed << setprecision(2) << endl;
-	cout << "Total: $" << formatCurrency(*total) << fixed << setprecision(2) << endl;
-} // end function calculateFees
-
-//function to convert a double to a string
-string convertToString(double num)
-{
-	string str = to_string(num);
-	return str;
-} // end function convertToString
-
-//function to format a double to currency
-string formatCurrency(double num)
-{
-	string str = convertToString(num);
-	int length = str.length();
-	int decimal = str.find('.');
-	if (decimal == -1)
+	while (pos > 3) // insert commas until pos is less than 3
 	{
-		str += ".00";
-	}
-	else if (length - decimal == 2)
-	{
-		str += "0";
-	}
-	return str;
-} // end function formatCurrency
+		pos -= 3; // move pos back 3 spaces
+		formatted.insert(pos, ","); // insert comma
+	} // end while loop
+	formatted.insert(0, "$"); // insert dollar sign
+	return formatted; // return formatted string
+} // end dollarFormat
+
+
+//**************************************************************
+// Returns a $-formatted version of the input double.          *
+//**************************************************************
+string dollarFormat(double value) {
+
+	//creat ostringstream oject
+	ostringstream ostr;
+
+	//set format flags
+	ostr << fixed << setprecision(2);
+
+	//insert value into stream
+	ostr << value;
+
+	//return formatted string
+	return dollarFormat(ostr.str());
+} // end dollarFormat
