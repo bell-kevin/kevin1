@@ -1,4 +1,4 @@
-// mod6repairShopBill.cpp : This file contains the 'main' function.
+// mod6rep// mod6repairShopBill.cpp : This file contains the 'main' function.
 //
 
 #include <iostream>
@@ -8,24 +8,21 @@
 using namespace std;
 string dollarFormat(string);
 string dollarFormat(double);
+double laborWage = 50.00, laborHours, partsCost, subtotal, shopFee, tax;
+void calcLaborCostAndPartsCostAndSubtotal(double, double, double);
 int main()
 {
 	cout << "Mod. 6 Repair Shop Bill by Kevin Bell\n\n";
 	cout << "Please enter the hours of labor: ";
-	double laborHours;
 	cin >> laborHours;
 	cout << "Enter the cost of parts: ";
-	double partsCost;
 	cin >> partsCost;
-	double laborWage = 50;
-	cout << "   Parts: " << dollarFormat(partsCost) << endl;
-	cout << "   Labor: " << dollarFormat(laborHours * laborWage) << endl;
-	double subtotal = partsCost + laborHours * laborWage;
-	cout << "Subtotal: " << dollarFormat(subtotal) << endl;
-	double shopFee = subtotal * .05;
+	calcLaborCostAndPartsCostAndSubtotal(laborHours, partsCost, laborWage);
+	shopFee = subtotal * .05;
 	cout << "Shop Fee: " << dollarFormat(shopFee) << endl;
-	cout << "     Tax: " << dollarFormat(subtotal * .04) << endl;
-	cout << "   Total: " << dollarFormat(subtotal + shopFee + subtotal * .04) << endl;
+	cout << "     Tax: " << dollarFormat((subtotal+shopFee) * .04) << endl;
+	tax = (subtotal + shopFee) * .04;
+	cout << "   Total: " << dollarFormat(subtotal + shopFee + tax) << endl;
 	system("pause");
 	return 0;
 }
@@ -66,3 +63,13 @@ string dollarFormat(double value) {
 	//return formatted string
 	return dollarFormat(ostr.str());
 } // end dollarFormat
+
+//function to calculate the costs of labor and parts. function will also print out the lines on the bill for the labor charge, parts charge, and the subtotal of those items.
+void calcLaborCostAndPartsCostAndSubtotal(double laborHours, double partsCost, double laborCost) {
+	laborCost = laborHours * laborWage;
+	partsCost = partsCost;
+	subtotal = laborCost + partsCost;
+	cout << "   Parts: " << dollarFormat(partsCost) << endl;
+	cout << "   Labor: " << dollarFormat(laborCost) << endl;
+	cout << "Subtotal: " << dollarFormat(subtotal) << endl;
+} //end calcLaborCostAndPartsCostAndSubtotal
