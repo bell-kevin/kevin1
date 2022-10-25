@@ -10,6 +10,7 @@ string dollarFormat(string);
 string dollarFormat(double);
 double laborWage = 50.00, laborHours, partsCost, subtotal, shopFee, tax;
 void calcLaborCostAndPartsCostAndSubtotal(double, double, double);
+void calcShopFeeAndTaxAndTotal(double, double, double);
 int main()
 {
 	cout << "Mod. 6 Repair Shop Bill by Kevin Bell\n\n";
@@ -18,11 +19,7 @@ int main()
 	cout << "Enter the cost of parts: ";
 	cin >> partsCost;
 	calcLaborCostAndPartsCostAndSubtotal(laborHours, partsCost, laborWage);
-	shopFee = subtotal * .05;
-	cout << "Shop Fee: " << dollarFormat(shopFee) << endl;
-	cout << "     Tax: " << dollarFormat((subtotal+shopFee) * .04) << endl;
-	tax = (subtotal + shopFee) * .04;
-	cout << "   Total: " << dollarFormat(subtotal + shopFee + tax) << endl;
+	calcShopFeeAndTaxAndTotal(subtotal, shopFee, tax);
 	system("pause");
 	return 0;
 }
@@ -64,7 +61,6 @@ string dollarFormat(double value) {
 	return dollarFormat(ostr.str());
 } // end dollarFormat
 
-//function to calculate the costs of labor and parts. function will also print out the lines on the bill for the labor charge, parts charge, and the subtotal of those items.
 void calcLaborCostAndPartsCostAndSubtotal(double laborHours, double partsCost, double laborCost) {
 	laborCost = laborHours * laborWage;
 	partsCost = partsCost;
@@ -73,3 +69,12 @@ void calcLaborCostAndPartsCostAndSubtotal(double laborHours, double partsCost, d
 	cout << "   Labor: " << dollarFormat(laborCost) << endl;
 	cout << "Subtotal: " << dollarFormat(subtotal) << endl;
 } //end calcLaborCostAndPartsCostAndSubtotal
+
+
+void calcShopFeeAndTaxAndTotal(double subtotal, double shopFee, double tax) {
+	shopFee = subtotal * .05;
+	tax = (subtotal + shopFee) * .04;
+	cout << "Shop Fee: " << dollarFormat(shopFee) << endl;
+	cout << "     Tax: " << dollarFormat(tax) << endl;
+	cout << "   Total: " << dollarFormat(subtotal + shopFee + tax) << endl;
+} //end calcShopFeeAndTaxAndTotal
