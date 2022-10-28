@@ -33,11 +33,11 @@ Print out a bill with the line items listed above, with all numbers formatted as
 
 Ask the user for the hours of labor and the cost of the parts. Call a function to calculate the costs of labor and parts; use pointers only for the parameters. This function will also print out the lines on the bill for the labor charge, parts charge, and the subtotal of those items. Call another function to calculate the shop fee and the tax, using pointers only for the parameters. This function will also print out the lines on the bill for the shop fee, tax, and total. The shop fee rate, hourly labor rate, and tax rate should be declared as global variables, available in all functions without being passed into them. Include the functions to convert a numeric variable into a string, and to format strings into currency. All numeric output must be formatted as currency.
 
-M6 Competency running
+![M6 Competency running](https://github.com/bell-kevin/mod6repairShopBill/blob/main/repairBill.PNG)
 
 Create a table of at least 3 test cases BEFORE you write and run your project to calculate the correct results for different sets of input. Make sure you calculate the correct answers for each line in the output, and verify that your program generates the same numbers. Run your code, enter the data from each test case, and compare your results to those test cases. Take screenshots of all 3 results.
 
- 
+ ![p](https://github.com/bell-kevin/mod6repairShopBill/blob/main/repairBill000.PNG)
 
 NOTE: Remember the requirements for a header and a pause at the end of the program, discussed in the reading "Console Applications". These are required in every console application project.
 
