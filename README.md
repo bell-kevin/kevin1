@@ -5,18 +5,31 @@ This exercise demonstrates your competency in the skills learned in this module.
 These are skills you practiced in this and previous modules and will now demonstrate:
 
 Creating and using pointers
+
 Using C-Strings and the String class
+
 Creating and using arrays
+
 Creating and using 2D arrays
+
 Sorting arrays
+
 Searching arrays
+
 Creating and using vectors
+
 Writing and using structures
+
 Writing and using classes
+
 Writing and using functions
+
 Passing parameters to functions
+
 Returning values from functions
+
 Using loops
+
 Reading input and writing output
  
 
@@ -25,10 +38,15 @@ Module 6 Competency Project: Repair Shop Bill
 Create a project that calculates the bill at a repair shop. The bill includes:
 
 labor charge, which is the number of hours of labor entered by the user charged at the rate of $50.00/hour.
+
 parts charge, which is a double entered by the user
+
 shop fee, which is the total of the labor and parts charges times the shop fee rate of 5%
+
 tax, which is the total of the labor charge, parts charge, and shop fee, times the tax rate of 4%
+
 total, which is the sum of the labor charge, parts charge, shop fee, and tax
+
 Print out a bill with the line items listed above, with all numbers formatted as currency.
 
 Ask the user for the hours of labor and the cost of the parts. Call a function to calculate the costs of labor and parts; use pointers only for the parameters. This function will also print out the lines on the bill for the labor charge, parts charge, and the subtotal of those items. Call another function to calculate the shop fee and the tax, using pointers only for the parameters. This function will also print out the lines on the bill for the shop fee, tax, and total. The shop fee rate, hourly labor rate, and tax rate should be declared as global variables, available in all functions without being passed into them. Include the functions to convert a numeric variable into a string, and to format strings into currency. All numeric output must be formatted as currency.
